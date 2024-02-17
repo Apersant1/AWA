@@ -38,35 +38,34 @@ const Home: NextPage = () => {
             <div className={styles.heroBody}>
               <h1 className={styles.heroTitle}>
                 <span className={styles.heroTitleGradient}>
-                  Build NFT Marketplaces
+                  Manipulate NFT
                 </span>
                 <br />
                 faster than ever.
               </h1>
               <p className={styles.heroSubtitle}>
+                Created at
+                <br/>
                 <Link
                   className={styles.link}
-                  href="https://thirdweb.com"
+                  href="https://github.com/Kyo473"
                   target="_blank"
                 >
-                  thirdweb
+                  @Kyo473
                 </Link>{" "}
-                gives you the tools you need to create audited, performant, and
-                flexible NFT marketplaces in <b>hours</b>, <i>not months</i>.
+              
+                <Link
+                  className={styles.link}
+                  href="https://github.com/Apersant1"
+                  target="_blank"
+                >
+                  @Captain_jasey
+                </Link>{" "}
+                
               </p>
 
-              <div className={styles.heroCtaContainer}>
-                <Link className={styles.heroCta} href="/buy">
-                  Get Started
-                </Link>
-                <Link
-                  className={styles.secondaryCta}
-                  href="https://github.com/thirdweb-example/marketplace-v3"
-                  target="_blank"
-                >
-                  GitHub
-                </Link>
-              </div>
+              
+             
             </div>
           </div>
         </div>

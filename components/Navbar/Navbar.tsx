@@ -15,6 +15,7 @@ export function Navbar() {
       <nav className={styles.nav}>
         <div className={styles.navLeft}>
           <Link href="/" className={`${styles.homeLink} ${styles.navLeft}`}>
+            AWA
             <Image
               src="/logo.png"
               width={48}
