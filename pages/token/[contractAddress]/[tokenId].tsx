@@ -1,31 +1,31 @@
 import {
-  MediaRenderer,
-  ThirdwebNftMedia,
-  useContract,
-  useContractEvents,
-  useValidDirectListings,
-  useValidEnglishAuctions,
-  Web3Button,
+  MediaRenderer, // Importing MediaRenderer component
+  ThirdwebNftMedia, // Importing ThirdwebNftMedia component
+  useContract, // Importing useContract hook
+  useContractEvents, // Importing useContractEvents hook
+  useValidDirectListings, // Importing useValidDirectListings hook
+  useValidEnglishAuctions, // Importing useValidEnglishAuctions hook
+  Web3Button, // Importing Web3Button component
 } from "@thirdweb-dev/react";
-import React, { useState } from "react";
-import Container from "../../../components/Container/Container";
-import { GetStaticProps, GetStaticPaths } from "next";
-import { NFT, ThirdwebSDK } from "@thirdweb-dev/sdk";
-import { ETHERSCAN_URL, MARKETPLACE_ADDRESS, NETWORK, NFT_COLLECTION_ADDRESS } from "../../../const/contractAddresses";
-import styles from "../../../styles/Token.module.css";
-import Link from "next/link";
-import randomColor from "../../../util/randomColor";
-import Skeleton from "../../../components/Skeleton/Skeleton";
-import toast, { Toaster } from "react-hot-toast";
-import toastStyle from "../../../util/toastConfig";
+import React, { useState } from "react"; // Importing React and useState hook
+import Container from "../../../components/Container/Container"; // Importing Container component
+import { GetStaticProps, GetStaticPaths } from "next"; // Importing Next.js's GetStaticProps and GetStaticPaths
+import { NFT, ThirdwebSDK } from "@thirdweb-dev/sdk"; // Importing NFT and ThirdwebSDK from thirdweb-dev
+import { ETHERSCAN_URL, MARKETPLACE_ADDRESS, NETWORK, NFT_COLLECTION_ADDRESS } from "../../../const/contractAddresses"; // Importing contract addresses
+import styles from "../../../styles/Token.module.css"; // Importing styles from Token.module.css
+import Link from "next/link"; // Importing Link component from Next.js
+import randomColor from "../../../util/randomColor"; // Importing randomColor utility function
+import Skeleton from "../../../components/Skeleton/Skeleton"; // Importing Skeleton component
+import toast, { Toaster } from "react-hot-toast"; // Importing toast and Toaster components from react-hot-toast
+import toastStyle from "../../../util/toastConfig"; // Importing toastConfig utility function
 
-type Props = {
+type Props = { // Defining Props type
   nft: NFT;
   contractMetadata?: any;
 };
 
-const TokenPage = ({ nft, contractMetadata }: Props) => {
-  const [bidValue, setBidValue] = useState<string>("");
+const TokenPage = ({ nft, contractMetadata }: Props) => { // Defining TokenPage component with destructured Props
+  const [bidValue, setBidValue] = useState<string>(""); // Declaring and initializing bidValue state using useState hook
 
   // Connect to marketplace smart contract
   const { contract: marketplace, isLoading: loadingContract } = useContract(
@@ -36,6 +36,7 @@ const TokenPage = ({ nft, contractMetadata }: Props) => {
   // Connect to NFT Collection smart contract
   const { contract: nftCollection } = useContract(NFT_COLLECTION_ADDRESS);
 
+  // Load direct listings for the NFT
   const { data: directListing, isLoading: loadingDirect } = useValidDirectListings(
     marketplace,
     {
@@ -44,14 +45,14 @@ const TokenPage = ({ nft, contractMetadata }: Props) => {
     }
   );
 
-  // Load if the NFT is for auction
+  // Load auction listings for the NFT
   const { data: auctionListing, isLoading: loadingAuction } =
     useValidEnglishAuctions(marketplace, {
       tokenContract: NFT_COLLECTION_ADDRESS,
       tokenId: nft.metadata.id,
     });
 
-  // Load historical transfer events: TODO - more event types like sale
+  // Load historical transfer events
   const { data: transferEvents, isLoading: loadingTransferEvents } =
     useContractEvents(nftCollection, "Transfer", {
       queryFilter: {
@@ -62,9 +63,9 @@ const TokenPage = ({ nft, contractMetadata }: Props) => {
       },
     });
 
-  const isForSale = directListing?.[0] || auctionListing?.[0];
+  const isForSale = directListing?.[0] || auctionListing?.[0]; // Determine if the NFT is for sale
 
-  const buyListing = async () => {
+  const buyListing = async () => { // Function to buy the NFT from direct listing or auction
     if (auctionListing?.[0]) {
       return await marketplace?.englishAuctions.buyoutAuction(
         auctionListing[0].id
@@ -81,7 +82,7 @@ const TokenPage = ({ nft, contractMetadata }: Props) => {
     throw new Error("No valid listing found for this NFT");
   };
 
-  const createBidOrOffer = async () => {
+  const createBidOrOffer = async () => { // Function to create a bid or offer for the NFT
     if (!bidValue) {
       toast(`Please enter a bid value`, {
         icon: "❌",
@@ -140,25 +141,3 @@ const TokenPage = ({ nft, contractMetadata }: Props) => {
 
               <h3 className={styles.descriptionTitle}>History</h3>
 
-              <div className={styles.traitsContainer}>
-                {transferEvents?.map((event, index) => (
-                  <div
-                    key={event.transaction.transactionHash}
-                    className={styles.eventsContainer}
-                  >
-                    <div className={styles.eventContainer}>
-                      <p className={styles.traitName}>Event</p>
-                      <p className={styles.traitValue}>
-                        {index === transferEvents.length - 1
-                          ? "Mint"
-                          : "Transfer"}
-                      </p>
-                    </div>
-
-                    <div className={styles.eventContainer}>
-                      <p className={styles.traitName}>From</p>
-                      <p className={styles.traitValue}>
-                        {event.data.from?.slice(0, 4)}...
-                        {event.data.from?.slice(-2)}
-                      </p>
-                    </div>
