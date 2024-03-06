@@ -1,4 +1,8 @@
 .container {
+  /* Sets the minimum height to 99vh (viewport height) and minimum width to 96vw (viewport width).
+     The width is set to 100% and the height is set to 100% to ensure the container takes up the full available space.
+     The display is set to flex with a column direction, and the container is aligned to the center both horizontally and vertically.
+     The text alignment is also set to center. The max-width is set to 100vw to prevent the container from exceeding the viewport width. */
   min-height: 99vh;
   min-width: 96vw;
   width: 100%;
@@ -13,6 +17,7 @@
 }
 
 .content {
+  /* Sets the max-width to 1204px and the width to 100%. The margin-left and margin-right are set to 16px. */
   max-width: 1204px;
   width: 100%;
   margin-left: 16px;
@@ -20,10 +25,15 @@
 }
 
 .hero {
+  /* Sets the padding-bottom to 128px. */
   padding-bottom: 128px;
 }
 
 .heroBackground {
+  /* Positions the element absolutely, sets the z-index to -1 (behind other elements),
+     positions it at the top left corner of the viewport, sets the overflow to hidden,
+     and sets the minimum width, maximum width, and height to match the viewport.
+     The pointer-events are set to none to make the element unclickable. */
   position: absolute;
   z-index: -1;
   top: 0;
@@ -36,6 +46,9 @@
 }
 
 .heroBackgroundInner {
+  /* Positions the element absolutely, sets the top to -352px, left to 50%,
+     and width to match the viewport width. The aspect-ratio is set to 1/1,
+     and the transform is set to translateX(-50%) to horizontally center the element. */
   position: absolute;
   top: -352px;
   left: 50%;
@@ -45,12 +58,15 @@
 }
 
 .gradient {
+  /* Sets the height and width to 100%, and the opacity to 0.76. */
   height: 100%;
   width: 100%;
   opacity: 0.76;
 }
 
 .heroAssetFrame {
+  /* Displays the flexbox as a row, justifies the content to the center,
+     sets the margin to 24px auto 0, and pads the content by 2em. */
   display: flex;
   justify-content: center;
   margin: 24px auto 0;
@@ -59,17 +75,21 @@
 }
 
 .heroAsset {
+  /* Sets the max-width to 100vw and the margin-bottom to 16px. */
   max-width: 100vw;
   margin-bottom: 16px;
 }
 
 .heroBodyContainer {
+  /* Sets the width to 100%, pads the content by 0 32px, and sets the margin to 0 auto. */
   width: 100%;
   padding: 0 32px;
   margin: 0 auto;
 }
 
 .heroBody {
+  /* Positions the element relatively, displays the flexbox as a column,
+     aligns the items to the center, and sets the padding to 0 32px. */
   position: relative;
   display: flex;
   flex-direction: column;
@@ -77,6 +97,10 @@
 }
 
 .heroTitle {
+  /* Sets the margin-top to a negative value (based on viewport width),
+     margin-bottom to 20px, color to white, font-size to a value based on viewport width,
+     font-style to normal, font-weight to 700, letter-spacing to 1.2px,
+     text-align to center, overflow to visible, and letter-spacing to -0.05em. */
   margin-top: clamp(-30px, calc(-7vw + 57px), 5px);
   margin-bottom: 20px;
   color: #fff;
@@ -90,261 +114,14 @@
 }
 
 .heroTitleGradient {
+  /* Padding-right is set to 12px and font-weight is set to 700. */
   padding-right: 12px;
   font-weight: 700;
 }
 
 .heroSubtitle {
+  /* Sets the max-width to 640px, margin to 0 0 40px, color to a semi-transparent white,
+     font-size to a value based on viewport width, letter-spacing to 0.3px,
+     line-height to 140%, text-align to center, and transform to translateY(5px). */
   max-width: 640px;
-  margin: 0 0 40px;
-  color: hsla(0, 0%, 100%, 0.4);
-  font-size: Min(3.8vw, 20px);
-  letter-spacing: 0.3px;
-  line-height: 140%;
-  text-align: center;
-  transform: translateY(5px);
-}
-
-.heroCtaContainer {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 16px;
-}
-
-.codeButton {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-  width: 560px;
-  max-width: 100%;
-  height: 48px;
-  font-family: "Fira Code", monospace;
-  font-size: 16px;
-  background-color: transparent;
-  border: 2px solid hsla(0, 0%, 100%, 0.1);
-  border-radius: 8px;
-  transition: background-color 0.2s;
-}
-
-/* Place a $  before the code button text */
-.codeButton::before {
-  content: "$ ";
-  color: #fff;
-  font-size: 16px;
-  font-weight: 500;
-  letter-spacing: 0.2px;
-  line-height: 20px;
-  margin-right: 8px;
-}
-
-.codeButton:hover {
-  cursor: pointer;
-  background-color: hsla(0, 0%, 100%, 0.1);
-}
-
-.codeButtonCopy {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-  max-width: 100%;
-  font-family: "Fira Code", monospace;
-  font-size: 16px;
-  background-color: transparent;
-  border: none;
-  opacity: 0.9;
-}
-
-.heroCta {
-  position: relative;
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  padding: 12px 40px;
-  border: 3px solid hsla(0, 0%, 100%, 0.1);
-  margin: 16px 0;
-  background-clip: padding-box;
-  background-color: hsla(0, 0%, 100%, 0.9);
-  border-radius: 8px;
-  color: #0d0d0d;
-  font-size: 16px;
-  font-weight: 500;
-  letter-spacing: 0.2px;
-  line-height: 20px;
-  transition: opacity 0.2s;
-  width: 280px;
-}
-
-.heroCta::before {
-  position: absolute;
-  z-index: -1;
-  top: 5px;
-  right: 5px;
-  bottom: 0;
-  left: 5px;
-  background: conic-gradient(
-    from 147.14deg at 50% 50%,
-    var(--color-primary) -55.68deg,
-    var(--color-secondary) 113.23deg,
-    var(--color-tertiary) 195deg,
-    var(--color-quaternary) 304.32deg,
-    var(--color-primary) 473.23deg
-  );
-  border-radius: 6px;
-  content: "";
-  filter: blur(20px);
-  opacity: 0.6;
-}
-
-.heroCta:hover {
-  cursor: pointer;
-  opacity: 0.7;
-}
-
-.secondaryCta {
-  color: #fff;
-  font-size: 16px;
-  font-weight: 500;
-  letter-spacing: 0.2px;
-  line-height: 20px;
-  transition: background-color 0.2s;
-  width: 280px;
-  border: 1px solid hsla(0, 0%, 100%, 0.25);
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-  transition: all 0.15s ease-in-out;
-}
-
-.secondaryCta:hover {
-  background-color: hsla(0, 0%, 100%, 0.1);
-}
-
-.tabs {
-  margin-top: 2em;
-  margin-bottom: 3em;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 1em;
-}
-
-.tab {
-  font-weight: 600;
-  cursor: pointer;
-  padding: 0.5em 0.75em;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
-  background-color: transparent;
-  transition: all 0.15s ease-in-out;
-  width: 20%;
-  height: 100%;
-  min-height: 62px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.activeTab {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.tab:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.tabContent {
-  transition: all 0.5s ease-in-out;
-}
-
-.transition {
-  opacity: 0;
-  transform: scale(0.9);
-}
-
-.link {
-  text-decoration: none;
-  transition: all 0.15s ease-in-out;
-  font-weight: 600;
-}
-
-.link:hover {
-  text-decoration: underline;
-}
-
-.code {
-  background-color: #0d0d18;
-  color: white;
-  padding: 8px 4px;
-  border-radius: 8px;
-}
-
-.list {
-  margin-top: 1em;
-  font-size: 1em;
-  line-height: 1.5;
-}
-
-.list li {
-  margin-bottom: 1em;
-}
-
-/* Screens smaller than 750px */
-@media (max-width: 750px) {
-  .tabs {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-  }
-
-  .tab {
-    width: 100%;
-  }
-
-  .heroTitle {
-  }
-}
-
-/* Less than 640 px */
-@media (max-width: 640px) {
-  .gradient {
-    margin-top: 256px;
-  }
-
-  .heroTitle {
-    margin-top: -48px;
-    font-size: 38px;
-  }
-
-  .heroCtaContainer {
-    flex-direction: column;
-    gap: 0px;
-  }
-
-  .heroAsset {
-    max-height: 270px;
-  }
-}
-
-/* Above 640 and less than 960 */
-@media (min-width: 640px) and (max-width: 960px) {
-  .gradient {
-    margin-top: 196px;
-  }
-
-  .heroTitle {
-    margin-top: -32px;
-    font-size: 60px;
-  }
-
-  .heroAsset {
-    max-height: 540px;
-  }
-}
+  margin: 0 
