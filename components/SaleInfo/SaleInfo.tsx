@@ -17,34 +17,41 @@ import toastStyle from "../../util/toastConfig";
 import styles from "../../styles/Sale.module.css";
 import profileStyles from "../../styles/Profile.module.css";
 
+// Props interface for the SaleInfo component
 type Props = {
-  nft: NFTType;
+  nft: NFTType; // The NFT object being sold
 };
 
+// Form data interface for the auction listing
 type AuctionFormData = {
-  nftContractAddress: string;
-  tokenId: string;
-  startDate: string;
-  endDate: string;
-  floorPrice: string;
-  buyoutPrice: string;
+  nftContractAddress: string; // The address of the NFT contract
+  tokenId: string; // The token ID of the NFT
+  startDate: string; // The start date of the auction in ISO format
+  endDate: string; // The end date of the auction in ISO format
+  floorPrice: string; // The floor price of the auction
+  buyoutPrice: string; // The buyout price of the auction
 };
 
+// Form data interface for the direct listing
 type DirectFormData = {
-  nftContractAddress: string;
-  tokenId: string;
-  price: string;
-  startDate: string;
-  endDate: string;
+  nftContractAddress: string; // The address of the NFT contract
+  tokenId: string; // The token ID of the NFT
+  price: string; // The price of the direct listing
+  startDate: string; // The start date of the direct listing in ISO format
+  endDate: string; // The end date of the direct listing in ISO format
 };
 
+// SaleInfo component
 export default function SaleInfo({ nft }: Props) {
+  // State and hook declarations
   const router = useRouter();
   const { contract: marketplace } = useContract(MARKETPLACE_ADDRESS, "marketplace-v3");
   const { contract: nftCollection } = useContract(NFT_COLLECTION_ADDRESS);
   const { mutateAsync: createAuctionListing } = useCreateAuctionListing(marketplace);
   const { mutateAsync: createDirectListing } = useCreateDirectListing(marketplace);
   const [tab, setTab] = useState<"direct" | "auction">("direct");
+
+  // Form hook declarations
   const { register: registerAuction, handleSubmit: handleSubmitAuction, reset } = useForm<AuctionFormData>({
     defaultValues: {
       nftContractAddress: NFT_COLLECTION_ADDRESS,
@@ -55,6 +62,7 @@ export default function SaleInfo({ nft }: Props) {
       buyoutPrice: "0",
     },
   });
+
   const { register: registerDirect, handleSubmit: handleSubmitDirect, reset: resetDirect } = useForm<DirectFormData>({
     defaultValues: {
       nftContractAddress: NFT_COLLECTION_ADDRESS,
@@ -65,6 +73,7 @@ export default function SaleInfo({ nft }: Props) {
     },
   });
 
+  // Function to check and provide approval for the marketplace
   const checkAndProvideApproval = async () => {
     if (!nftCollection) return;
 
@@ -84,6 +93,7 @@ export default function SaleInfo({ nft }: Props) {
     return true;
   };
 
+  // Function to handle auction submission
   const handleSubmissionAuction = async (data: AuctionFormData) => {
     await checkAndProvideApproval();
     const txResult = await createAuctionListing({
@@ -98,6 +108,7 @@ export default function SaleInfo({ nft }: Props) {
     return txResult;
   };
 
+  // Function to handle direct submission
   const handleSubmissionDirect = async (data: DirectFormData) => {
     await checkAndProvideApproval();
     const txResult = await createDirectListing({
@@ -111,6 +122,7 @@ export default function SaleInfo({ nft }: Props) {
     return txResult;
   };
 
+  // Function to handle auction form submission
   const onSubmitAuction = (data: AuctionFormData) => {
     handleSubmitAuction(data).then((txResult) => {
       toast("Listed Successfully!", {
@@ -123,22 +135,4 @@ export default function SaleInfo({ nft }: Props) {
     });
   };
 
-  const onSubmitDirect = (data: DirectFormData) => {
-    handleSubmitDirect(data).then((txResult) => {
-      toast("Listed Successfully!", {
-        icon: "🥳",
-        style: toastStyle,
-        position: "bottom-center",
-      });
-      router.push(`/token/${NFT_COLLECTION_ADDRESS}/${nft.metadata.id}`);
-      resetDirect();
-    });
-  };
-
-  return (
-    <>
-      <Toaster position="bottom-center" reverseOrder={false} />
-      <div className={styles.saleInfoContainer} style={{ marginTop: -42 }}>
-        <div className={profileStyles.tabs}>
-          <h3
-            className={`${profileStyles.tab} ${tab === "direct" ? profileStyles.active
+  // Function to
