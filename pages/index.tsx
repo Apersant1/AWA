@@ -1,13 +1,12 @@
 import type { NextPage } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
 import styles from "../styles/Home.module.css";
 
-/**
- * Landing page with a simple gradient background and a hero asset.
- * Free to customize as you see fit.
- */
 const Home: NextPage = () => {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <div className={styles.container}>
       <div className={styles.content}>
@@ -34,38 +33,44 @@ const Home: NextPage = () => {
               className={styles.heroAsset}
             />
           </div>
-          <div className={styles.heroBodyContainer}>
+          <div
+            className={styles.heroBodyContainer}
+            onMouse={(e) => {
+              if (e.type === "mouseenter") {
+                setIsHovered(true);
+              } else {
+                setIsHovered(false);
+              }
+            }}
+          >
             <div className={styles.heroBody}>
               <h1 className={styles.heroTitle}>
-                <span className={styles.heroTitleGradient}>
+                <span
+                  className={`${styles.heroTitleGradient} ${
+                    isHovered ? styles.heroTitleHovered : ""
+                  }`}
+                >
                   Manipulate NFT
                 </span>
                 <br />
                 faster than ever.
               </h1>
               <p className={styles.heroSubtitle}>
-                Created at
-                <br/>
                 <Link
                   className={styles.link}
                   href="https://github.com/Kyo473"
                   target="_blank"
                 >
-                  @Kyo473
-                </Link>{" "}
-              
+                  Created at <span>@Kyo473</span>
+                </Link>
                 <Link
                   className={styles.link}
                   href="https://github.com/Apersant1"
                   target="_blank"
                 >
-                  @Captain_jasey
-                </Link>{" "}
-                
+                  <span>@Captain_jasey</span>
+                </Link>
               </p>
-
-              
-             
             </div>
           </div>
         </div>
