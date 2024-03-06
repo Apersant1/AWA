@@ -1,3 +1,5 @@
+/* Defines a container for the NFT grid with display flex, flex-direction row,
+   flex-wrap wrap, gap of 1%, and width of 100% */
 .nft-grid-container {
   display: flex;
   flex-direction: row;
@@ -6,6 +8,9 @@
   width: 100%;
 }
 
+/* Defines the styles for each NFT container including width, margin, position,
+   overflow, border-radius, backface-visibility, transform, display, padding,
+   max-height, transition, and cursor properties */
 .nft-container {
   width: calc(100% / 5 - 2%); /* Adjusts to 5 items per row on larger screens */
   margin: 8px;
@@ -13,7 +18,6 @@
   overflow: hidden;
   border-radius: 8px;
   backface-visibility: hidden;
-  outline: 1px solid rgba(255, 255, 255, 0.1);
   transform: translate3d(0px, 0px, 0px);
   display: flex;
   flex-direction: column;
@@ -23,24 +27,19 @@
   cursor: pointer;
 }
 
+/* Defines the hover styles for the NFT container, including transform and box-shadow properties */
 .nft-container:hover {
   transform: translate3d(0px, -4px, 0px);
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Defines the title styles for each NFT container, including padding, font-size, and margin-bottom properties */
 .title {
   padding: 8px;
   font-size: 3rem;
   margin-bottom: 8px;
 }
 
-/* Responsive */
+/* Defines the responsive styles for the NFT container, adjusting the width to 4 items per row on medium screens */
 @media (max-width: 1440px) {
   .nft-container {
-    width: calc(100% / 4 - 2%); /* Adjusts to 4 items per row on medium screens */
-  }
-}
-
-@media (max-width: 1024px) {
-  .nft-container {
-    width: calc(1
