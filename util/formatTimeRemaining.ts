@@ -1,22 +1,30 @@
 import { BigNumber, BigNumberish } from "ethers";
 
+interface TimeRemaining {
+  value: number;
+  unit: "seconds" | "minutes" | "hours" | "days";
+}
+
 export default function formatTimeRemaining(
   unixTimestamp: BigNumberish
-): string {
-  // Get the current time in seconds
+): TimeRemaining {
   const now = Math.floor(Date.now() / 1000);
-
-  // Calculate the time difference between now and the input timestamp
   const timeDifference = BigNumber.from(unixTimestamp).sub(now).toNumber();
 
-  // Convert the time difference to seconds, minutes, hours, or days
-  if (timeDifference < 60) {
-    return `${timeDifference} seconds`;
-  } else if (timeDifference < 3600) {
-    return `${Math.floor(timeDifference / 60)} minutes`;
-  } else if (timeDifference < 86400) {
-    return `${Math.floor(timeDifference / 3600)} hours`;
-  } else {
-    return `${Math.floor(timeDifference / 86400)} days`;
+  if (timeDifference < 1) {
+    return { value: timeDifference, unit: "seconds" };
+  }
+
+  const units = [
+    { name: "seconds", divisor: 1 },
+    { name: "minutes", divisor: 60 },
+    { name: "hours", divisor: 3600 },
+    { name: "days", divisor: 86400 },
+  ];
+
+  for (const unit of units) {
+    if (timeDifference >= unit.divisor) {
+      return { value: Math.floor(timeDifference / unit.divisor), unit: unit.name };
+    }
   }
 }
