@@ -1,89 +1,39 @@
+/* Container for the navigation section */
 .navContainer {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 3;
-  background-color: transparent;
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  position: fixed; /* Position fixed to make the navigation bar stay in place */
+  top: 0; /* Positioned at the top of the viewport */
+  left: 0; /* Positioned at the left edge of the viewport */
+  width: 100%; /* Spans the full width of the viewport */
+  height: 60px; /* Sets the height of the navigation bar */
+  display: flex; /* Utilizes flexbox for alignment */
+  align-items: center; /* Centers the content vertically */
+  justify-content: center; /* Centers the content horizontally */
+  z-index: 3; /* Ensures the navigation bar appears above other elements */
+  background-color: transparent; /* Transparent background color */
+  backdrop-filter: blur(5px); /* Adds a slight blur effect to the background */
+  -webkit-backdrop-filter: blur(5px); /* Adds support for Webkit-based browsers */
 }
 
+/* The navigation section itself */
 .nav {
-  width: 98%;
-  max-width: 1260px;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 2em;
+  width: 98%; /* Occupies 98% of the .navContainer width */
+  max-width: 1260px; /* Sets the maximum width of the navigation section */
+  height: 100%; /* Matches the height of the .navContainer */
+  display: flex; /* Utilizes flexbox for alignment */
+  align-items: center; /* Centers the content vertically */
+  justify-content: space-between; /* Distributes the content evenly within the .nav section */
+  padding: 0 2em; /* Adds horizontal padding */
 }
 
+/* Individual sections within the .nav section */
 .navLeft,
 .navMiddle,
 .navRight {
-  display: flex;
-  align-items: center;
+  display: flex; /* Utilizes flexbox for alignment */
+  align-items: center; /* Centers the content vertically */
 }
 
+/* The .navLeft section */
 .navLeft {
-  gap: 12px;
-  transition: all 0.15s ease-in-out;
-}
-
-.navMiddle {
-  margin-left: 12px;
-  gap: 24px;
-}
-
-.link {
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 16px;
-  font-weight: 500;
-  letter-spacing: 0.2px;
-  line-height: 16px;
-  transition: color 0.3s ease-in-out;
-}
-
-.link:hover {
-  color: rgba(255, 255, 255, 1);
-}
-
-.homeLink:hover {
-  cursor: pointer;
-  opacity: 0.8;
-}
-
-.navRight {
-  gap: 16px;
-}
-
-.profileImage {
-  margin-top: 6px;
-  transition: all 0.15s ease-in-out;
-}
-
-.profileImage:hover {
-  cursor: pointer;
-  opacity: 0.8;
-}
-
-.homeLink {
-  font-size: 24px;
-  font-weight: 500;
-}
-
-.buttonLink:hover {
-  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
-}
-
-/* Screens less than 720px */
-@media (max-width: 720px) {
-  .navMiddle {
-    display: none;
-  }
-}
+  gap: 12px; /* Adds horizontal spacing between elements */
+  transition: all 0.15s ease-in-out; /*
