@@ -1,12 +1,20 @@
 .container {
+  /* Sets the maximum width of the container to 100% 
+     and displays its children elements in a row with 
+     a gap of 32px. The container's children will be 
+     centered vertically. */
   max-width: 100%;
   display: flex;
   flex-direction: row;
   gap: 32px;
   margin-top: 128px;
+  align-items: center;
 }
 
 @media (max-width: 960px) {
+  /* Changes the container's flex direction to column and 
+     adds a padding-bottom of 128px when the viewport is 
+     less than or equal to 960px. */
   .container {
     flex-direction: column;
     padding-bottom: 128px;
@@ -14,14 +22,19 @@
 }
 
 .metadataContainer {
+  /* Displays the metadata container's children elements in 
+     a column and vertically aligns them to the inherit 
+     (default) value. */
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
   vertical-align: inherit;
-  margin-top: 32px;
 }
 
 .listingContainer {
+  /* Sets the listing container's minimum width to 370px, 
+     maximum width to 450px, and margin-top and margin-right 
+     to 16px. The container will shrink to fit its content. */
   flex-shrink: 1;
   position: sticky;
   width: 100%;
@@ -32,6 +45,8 @@
 }
 
 .image {
+  /* Rounds the image's corners, sets its width to 100% 
+     and height to auto, and adds a background color. */
   border-radius: 16px;
   width: 100% !important;
   height: auto !important;
@@ -39,6 +54,12 @@
 }
 
 .input {
+  /* Displays the input field as a block-level element, 
+     sets its width to 98%, padding to 12px 16px, margin-bottom 
+     to 0.5rem, background to transparent, border to none, 
+     font-size to 16px, box-shadow to a semi-transparent 
+     white color, border-radius to 8px, and margin-bottom 
+     to 16px and margin-left to 2px. */
   display: block;
   width: 98%;
   padding: 12px 16px;
@@ -53,17 +74,23 @@
 }
 
 .contractMetadataContainer {
+  /* Displays the contract metadata container's children 
+     elements in a row and aligns them to the center. */
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-bottom: 8px;
 }
 
 .imageContainer {
+  /* Positions the image container relatively to its parent 
+     container. */
   position: relative;
 }
 
 .crossButton {
+  /* Positions the cross button absolutely to the top-right 
+     corner of its parent container. Transitions the 
+     background color when hovered. */
   position: absolute;
   top: 10px;
   right: 10px;
@@ -71,11 +98,16 @@
 }
 
 .crossButton:hover {
+  /* Changes the background color of the cross button 
+     when hovered. */
   cursor: pointer;
   background-color: rgba(255, 255, 255, 0.8) !important;
 }
 
 .collectionImage {
+  /* Sets the collection image's width and height to 32px, 
+     border-radius to 8px, and adds margin-right of 8px, 
+     margin-left of 16px, and margin-right of 16px. */
   width: 32px !important;
   height: 32px !important;
   border-radius: 8px;
@@ -85,108 +117,7 @@
 }
 
 .collectionName {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  max-width: 100%;
-  margin: 0px;
-  margin-left: 16px;
-  margin-right: 16px;
-}
-
-.title {
-  font-weight: 700;
-  font-size: 32px;
-  hyphens: auto;
-  overflow-wrap: break-word;
-  margin-bottom: 4px;
-  margin-left: 16px;
-  margin-right: 16px;
-}
-
-.nftOwnerContainer {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-bottom: 8px;
-  gap: 8px;
-  transition: opacity 0.2s ease-in-out;
-  margin-left: 16px;
-  margin-right: 16px;
-}
-
-.nftOwnerContainer:hover {
-  cursor: pointer;
-  opacity: 0.8;
-}
-
-.nftOwnerImage {
-  margin-top: 16px;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  opacity: 0.9;
-  border: 2px solid rgba(255, 255, 255, 0.2);
-}
-
-.nftOwnerInfo {
-  margin: 0px;
-  padding: 0px;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  margin-top: 16px;
-}
-
-.label {
-  color: rgba(255, 255, 255, 0.6);
-  margin: 0px;
-  margin-bottom: 4px;
-}
-
-.nftOwnerAddress {
-  font-weight: 600;
-  margin: 0px;
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.descriptionContainer {
-  padding-left: 16px;
-  padding-right: 16px;
-}
-
-.descriptionTitle {
-  margin-top: 32px;
-}
-
-.traitsContainer {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-top: 12px;
-}
-
-.traitContainer {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  gap: 4px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 8px 12px;
-  min-width: 128px;
-  border-radius: 16px;
-  min-height: 32px;
-}
-
-.eventsContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.traitValue {
-  font-weight: 600;
-  margin: 0px;
-  color: rgba(255, 255, 255, 0.9);
-
+  /* Sets the collection name's text to overflow with ellipsis, 
+     white-space to nowrap, and overflow to hidden. Sets 
+     its max-width to 100%, margin to 0px, margin-left 
+     to 16px, and margin-right to 
