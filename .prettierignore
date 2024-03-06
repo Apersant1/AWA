@@ -1,16 +1,27 @@
 // application/constants/contractAddresses.ts
 
+// This module exports an object containing contract addresses for the mainnet and testnet networks.
+// Each network has two contracts: tokenSale and exchange.
 export const contractAddresses = {
+  // The mainnet network contains the following contract addresses:
   mainnet: {
+    // The address for the token sale contract on the mainnet network.
     tokenSale: '0x1234567890123456789012345678901234567890',
+    // The address for the exchange contract on the mainnet network.
     exchange: '0x9012345678901234567890123456789012345678',
   },
+  // The testnet network contains the following contract addresses:
   testnet: {
+    // The address for the token sale contract on the testnet network.
     tokenSale: '0xabcdefabcdefabcdefabcdefabcdefabcdefabcd',
+    // The address for the exchange contract on the testnet network.
     exchange: '0xdefabcdefabcdefabcdefabcdefabcdefabcdefabcd',
   },
 };
 
+// This function returns the contract address for the given network and contract name.
 export const getContractAddress = (network: 'mainnet' | 'testnet', contractName: 'tokenSale' | 'exchange') => {
+  // Return the contract address from the contractAddresses object using the provided network and contractName.
   return contractAddresses[network][contractName];
 };
+
