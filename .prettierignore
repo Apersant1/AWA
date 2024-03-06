@@ -1,1 +1,16 @@
-/application/const/contractAddresses.ts
+// application/constants/contractAddresses.ts
+
+export const contractAddresses = {
+  mainnet: {
+    tokenSale: '0x1234567890123456789012345678901234567890',
+    exchange: '0x9012345678901234567890123456789012345678',
+  },
+  testnet: {
+    tokenSale: '0xabcdefabcdefabcdefabcdefabcdefabcdefabcd',
+    exchange: '0xdefabcdefabcdefabcdefabcdefabcdefabcdefabcd',
+  },
+};
+
+export const getContractAddress = (network: 'mainnet' | 'testnet', contractName: 'tokenSale' | 'exchange') => {
+  return contractAddresses[network][contractName];
+};
