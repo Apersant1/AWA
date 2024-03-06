@@ -1,44 +1,42 @@
 .navContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: fixed;
-  top: 0px;
-  left: 0px;
   z-index: 3;
-  background-color: transparent !important;
+  background-color: transparent;
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
-  backdrop-filter: blur(5px);
 }
 
 .nav {
-  padding-left: 2em;
-  padding-right: 2em;
-  display: flex;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  align-items: center;
-  justify-content: space-between;
   width: 98%;
   max-width: 1260px;
-  background-color: transparent !important;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2em;
+}
+
+.navLeft,
+.navMiddle,
+.navRight {
+  display: flex;
+  align-items: center;
 }
 
 .navLeft {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
   gap: 12px;
   transition: all 0.15s ease-in-out;
 }
 
 .navMiddle {
-  display: flex;
   margin-left: 12px;
-  flex-direction: row;
-  align-items: center;
   gap: 24px;
 }
 
@@ -61,11 +59,7 @@
 }
 
 .navRight {
-  display: flex;
-  flex-direction: row;
   gap: 16px;
-  align-items: center;
-  justify-content: center;
 }
 
 .profileImage {
@@ -87,9 +81,9 @@
   box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
 }
 
-/* Sreens less than 720px */
-@media (max-width: 500px) {
-  .navConnect {
-    display: none !important;
+/* Screens less than 720px */
+@media (max-width: 720px) {
+  .navMiddle {
+    display: none;
   }
 }
